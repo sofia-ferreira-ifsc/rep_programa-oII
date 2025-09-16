@@ -1,13 +1,13 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-#include "libprg/libprg.h"
+#include "./libprg/libprg.h"
 
 typedef struct fila {
     int *elementos;
     int inicio;
     int fim;
-    int tamanho;
+    int tamanho; //remover o campo tamanho
     int capacidade;
 } fila_t;
 
@@ -35,5 +35,16 @@ void enfileirar(fila_t *fila, int valor){
 bool cheia(fila_t *fila){
     return fila->tamanho >= fila->capacidade;
 }
+
+void desenfileirar(fila_t *fila){
+	if(vazia(fila)){
+		exit(EXIT_FAILURE);
+	}
+}
+
+bool vazia(fila_t *fila){
+	return (fila->fim == fila->inicio);
+}
+
 
 /* desenfileirar, tamanho, vazia, inicio, fim */

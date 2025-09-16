@@ -9,12 +9,13 @@ set(CMAKE_C_STANDARD 17)
 
 # Add source files here manually
 set(SOURCES
-        "${CMAKE_CURRENT_LIST_DIR}/src/libprog/fila.c"
-        "${CMAKE_CURRENT_LIST_DIR}/src/libprog/pilha.c"
+        "${CMAKE_CURRENT_LIST_DIR}/src/libprg/fila.c"
+        "${CMAKE_CURRENT_LIST_DIR}/src/libprg/pilha.c"
+        "${CMAKE_CURRENT_LIST_DIR}/src/libprg/lista.c"
 )
 
 add_subdirectory(libprg
-              libprg/src/include/libprg/pilha.c)
+        libprg/src/libprg/fila.c)
 
 # https://cmake.org/cmake/help/book/mastering-cmake/chapter/Packaging%20With%20CPack.html
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})

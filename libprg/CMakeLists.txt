@@ -5,9 +5,14 @@ set(HEADERS
         "${CMAKE_CURRENT_LIST_DIR}/src/include/libprg/libprg.h"
 )
 
-add_library(libprg
-        src/libprog/pilha.c
-        src/libprog/fila.c)
+set(SOURCES
+        src/libprg/pilha.c
+        src/libprg/fila.c
+        src/libprg/lista.c
+)
+
+add_library(libprg ${SOURCES})
+
 target_sources(libprg PUBLIC ${SOURCES})
 target_include_directories(libprg PUBLIC ${CMAKE_CURRENT_LIST_DIR}/src/include)
 
@@ -21,4 +26,4 @@ source_group(
 
 # https://cmake.org/cmake/help/latest/command/install.html
 install(TARGETS libprg DESTINATION lib)
-install(FILES ${HEADER_LIST} DESTINATION include)
+install(FILES ${HEADERS} DESTINATION include)
