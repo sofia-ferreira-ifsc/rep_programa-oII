@@ -20,12 +20,23 @@ bool vazia(fila_t *fila);
 
 /*--- Lista Linear ---*/
 typedef struct lista_linear lista_linear_t;
-lista_linear_t* criar_lista(int capacidade);
-bool lista_cheia(lista_linear_t *lista);
-void inserir_item_lista(lista_linear_t *lista, int valor);
-bool lista_vazia(lista_linear_t *lista);
-int buscar_item_lista(lista_linear_t *lista, int valor);
-void destruir_lista(lista_linear_t *lista);
-void remover_item_lista(lista_linear_t *lista, int valor);
+lista_linear_t* criar_lista_linear(int capacidade, bool ordenada);
+bool lista_linear_cheia(lista_linear_t *lista);
+void inserir_item_lista_linear(lista_linear_t *lista, int valor);
+bool lista_linear_vazia(lista_linear_t *lista);
+int buscar_item_lista_linear(lista_linear_t *lista, int valor);
+void destruir_lista_linear(lista_linear_t *lista);
+void remover_item_lista_linear(lista_linear_t *lista, int valor);
+
+/*--- Lista Encadeada ---*/
+typedef struct no no_t;
+no_t* criar_lista_encadeada(int valor);
+void adicionar_lista_encadeada(no_t** inicio, int valor);
+no_t* buscar_lista_encadeada(no_t** inicio, int valor);
+void remover_item_lista_encadeada(no_t** inicio, int valor);
+
+/*--- Lista Encadeada Circular ---*/
+no_t* criar_lista_encadeada_circular(int valor);
+void adicionar_circular(no_t** inicio, int valor);
 
 #endif

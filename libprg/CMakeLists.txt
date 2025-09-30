@@ -8,7 +8,8 @@ set(HEADERS
 set(SOURCES
         src/libprg/pilha.c
         src/libprg/fila.c
-        src/libprg/lista.c
+        src/libprg/listaLinear.c
+        src/libprg/listaEncadeada.c
 )
 
 add_library(libprg ${SOURCES})
