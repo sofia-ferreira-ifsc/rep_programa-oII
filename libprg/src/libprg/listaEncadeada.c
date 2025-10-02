@@ -64,9 +64,19 @@ void remover_item_lista_encadeada(no_t** inicio, int valor){
             }
             free(atual);
             break;
-        } else{
-            anterior = atual;
-            atual = atual->proximo;
         }
+        anterior = atual;
+        atual = atual->proximo;
+    }
+}
+
+void destruir_lista_encadeada(no_t** inicio){
+    no_t* atual = *inicio;
+
+    while(atual){
+        no_t* proximo = atual->proximo;
+        free(atual);
+        if() break;
+        atual = proximo;
     }
 }
