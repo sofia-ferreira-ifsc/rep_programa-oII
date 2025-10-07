@@ -71,8 +71,24 @@ int buscar_item_lista_linear(lista_linear_t *lista, int valor){
     return -1;
 }
 
-int busca_binaria(lista_linear_t *lista, int valor){
+int busca_binaria(lista_linear_t *lista, int valor) {
+    int inicio = 0;
+    int fim = lista->tamanho - 1;
 
+    while (inicio <= fim) {
+        int meio = (inicio + fim) / 2;
+
+        if (lista->elementos[meio] == valor) {
+            return meio;
+        }
+        else if (lista->elementos[meio] < valor) {
+            inicio = meio + 1;
+        }
+        else {
+            fim = meio - 1;
+        }
+    }
+    return -1;
 }
 
 int buscar(lista_linear_t *lista, int valor){
@@ -80,6 +96,15 @@ int buscar(lista_linear_t *lista, int valor){
         return busca_binaria(lista, valor);
     }
     return buscar_item_lista_linear(lista, valor);
+}
+
+int buscar_item_lista(lista_linear_t *lista, int valor) {
+    for (int i = 0; i < lista->tamanho; i++) {
+        if (lista->elementos[i] == valor) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 void destruir_lista_linear(lista_linear_t *lista){

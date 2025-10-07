@@ -8,23 +8,46 @@ typedef struct pilha{
     int capacidade;
     int *elementos;
     int tamanho;
-} Pilha;
+} pilha_t;
 
+pilha_t *criarPilha(int capacidade){
+    pilha_t* pilha = malloc(sizeof(pilha_t));
+    pilha->elementos = malloc(capacidade * sizeof(int));
+    pilha->tamanho = -1; //inicializa a pilha como vazia
+    pilha->capacidade = capacidade;
 
-Pilha *criarPilha(int capacidade){
-    Pilha* p = malloc(sizeof(Pilha));
-    p->elementos = malloc(capacidade * sizeof(int));
-    p->tamanho = -1; //inicializa a pilha como vazia
-    p->capacidade = capacidade;
-    return p;
+    return pilha;
 }
 
-/*void empilhar(Pilha *pilha, int valor){
-    for(int i = 0; i < valor; i++){
-        push(&pilha->elementos, valor[i]);
-        i++;
+int pilha_vazia(pilha_t *pilha){
+    return pilha->tamanho == -1;
+}
+
+int tamanho_pilha(pilha_t *pilha){
+    return pilha->tamanho + 1;
+}
+
+void empilhar(pilha_t *pilha, int valor){
+    if(pilha->tamanho == pilha->capacidade - 1){
+        printf("Erro: pilha cheia!\n");
+        return;
     }
-    return pilha;
-}*/
+    pilha->tamanho++;
+    pilha->elementos[pilha->tamanho] = valor;
+}
 
+int desempilhar(pilha_t *pilha){
+    if(pilha_vazia(pilha)){
+        printf("Erro: pilha vazia!\n");
+        return -1;
+    }
+    int valor = pilha->elementos[pilha->tamanho];
+    pilha->tamanho--;
 
+    return valor;
+}
+
+void destruir_pilha(pilha_t *pilha){
+    free(pilha->elementos);
+    free(pilha);
+}

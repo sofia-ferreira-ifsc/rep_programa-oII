@@ -4,11 +4,13 @@
 #include <stdbool.h>
 
 /*--- Pilha ---*/
-typedef struct pilha Pilha;
-Pilha *criarPilha(int capacidade);
-void empilhar(Pilha *pilha, int valor);
-int tamanho(Pilha *pilha);
-void desctruir(Pilha *pilha);
+typedef struct pilha pilha_t;
+pilha_t *criarPilha(int capacidade);
+int pilha_vazia(pilha_t *pilha);
+int tamanho_pilha(pilha_t *pilha);
+void empilhar(pilha_t *pilha, int valor);
+int desempilhar(pilha_t *pilha);
+void destruir_pilha(pilha_t *pilha);
 
 /*--- Fila ---*/
 typedef struct fila fila_t;
