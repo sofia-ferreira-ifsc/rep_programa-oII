@@ -42,4 +42,11 @@ no_t* criar_lista_encadeada_circular(int valor);
 void adicionar_circular(no_t** inicio, int valor);
 void destruir_lista_encadeada(no_t** inicio);
 
+/*--- Lista Encadeada Dupla---*/
+typedef struct no_duplo no_duplo_t;
+no_duplo_t* criar_lista_encadeada_dupla(int valor);
+void adicionar_lista_encadeada_dupla(no_duplo_t** inicio, int valor);
+no_duplo_t* buscar_lista_encadeada_dupla(no_duplo_t** inicio, int valor);
+void remover_item_lista_encadeada_dupla(no_duplo_t** inicio, int valor);
+
 #endif

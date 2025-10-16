@@ -10,6 +10,7 @@ set(SOURCES
         src/libprg/fila.c
         src/libprg/listaLinear.c
         src/libprg/listaEncadeada.c
+        src/libprg/listaEncadeadaDupla.c
 )
 
 add_library(libprg ${SOURCES})
