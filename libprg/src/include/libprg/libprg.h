@@ -29,6 +29,10 @@ bool lista_linear_vazia(lista_linear_t *lista);
 int buscar_item_lista_linear(lista_linear_t *lista, int valor);
 void destruir_lista_linear(lista_linear_t *lista);
 void remover_item_lista_linear(lista_linear_t *lista, int valor);
+int buscar_na_posicao(lista_linear_t *lista, int posicao);
+void inserir_na_posicao(lista_linear_t *lista, int valor, int posicao);
+void remover_da_posicao(lista_linear_t *lista, int posicao);
+int limitar_posicao(lista_linear_t *lista, int posicao);
 
 /*--- Lista Encadeada ---*/
 typedef struct no no_t;

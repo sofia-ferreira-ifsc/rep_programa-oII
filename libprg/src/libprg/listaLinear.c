@@ -33,7 +33,7 @@ void inserir_nao_ordenada(lista_linear_t *lista, int valor){
     lista->tamanho++;
 }
 
-void inseir_ordenada(lista_linear_t *lista, int valor){
+void inserir_ordenada(lista_linear_t *lista, int valor){
     for(int i = lista->tamanho - 1; i >= 0; i--){
         if(lista->elementos[i] < valor){
             lista->elementos[i + 1] = valor;
@@ -46,13 +46,12 @@ void inseir_ordenada(lista_linear_t *lista, int valor){
 }
 
 void inserir_item_lista_linear(lista_linear_t *lista, int valor){
-    if(!lista_linear_cheia(lista)){
-        if(lista->ordenada){ //algoritmo para lista ordenada
-            inseir_ordenada(lista, valor);
-        } else{
-            inserir_nao_ordenada(lista, valor);
-        }
+    if(lista_linear_cheia(lista)){
+        lista->elementos = realloc(lista->elementos, sizeof(int) * lista->capacidade * 2);
+        lista->capacidade *= 2;
     }
+    if(lista->ordenada) inserir_ordenada(lista, valor);//algoritmo para lista ordenada
+    else inserir_nao_ordenada(lista, valor);
 }
 
 bool lista_linear_vazia(lista_linear_t *lista){
@@ -114,12 +113,32 @@ void destruir_lista_linear(lista_linear_t *lista){
 
 void remover_item_lista_linear(lista_linear_t *lista, int valor){
     int indiceItem = buscar_item_lista(lista, valor);
-    if(indiceItem == -1) {
-        return;
+    if(indiceItem > -1) {
+        lista->elementos[indiceItem] = lista->elementos[lista->tamanho - 1];
+        lista->tamanho--;
     }
+}
 
-    for(int i = indiceItem; i < lista->tamanho - 1; i++) {
-        lista->elementos[i] = lista->elementos[i + 1];
-    }
-    lista->tamanho--;
+int buscar_na_posicao(lista_linear_t *lista, int posicao){
+    return lista->elementos[posicao];
+}
+
+int limitar_posicao(lista_linear_t *lista, int posicao) {
+    if(posicao > lista->tamanho) return lista->tamanho;
+    if(posicao < 0) return 0;
+}
+
+// inserir e remover na posição
+void inserir_na_posicao(lista_linear_t *lista, int valor, int posicao){
+    int indice = limitar_posicao(lista, posicao);
+
+    inserir_item_lista_linear(lista, lista->elementos[indice]);
+    lista->elementos[posicao] = valor;
+}
+
+void remover_da_posicao(lista_linear_t *lista, int posicao){
+    limitar_posicao(lista, posicao);
+
+    int valor = lista->elementos[posicao];
+    remover_item_lista_linear(lista, valor);
 }
